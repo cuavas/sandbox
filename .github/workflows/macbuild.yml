@@ -1,0 +1,19 @@
+name: macOS build
+
+on:
+  push:
+    paths:
+    - '**'
+
+permissions:
+  contents: read
+
+jobs:
+  macbuild:
+    runs-on: macOS-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Build
+      run: make -j2
+    - name: Test
+      run: make check
